@@ -65,4 +65,45 @@ class BST {
       return node;
     }
   }
+
+  // method to perform inorder traversal
+  inorder(node) {
+    this.inorder(node.left);
+    console.log(node.data);
+    this.inorder(node.right);
+  }
+
+  // method to perform preorder traversal
+  preorder(node) {
+    console.log(node.data);
+    this.preorder(node.left);
+    this.preorder(node.right);
+  }
+
+  // method to perform postorder traversal
+  postorder(node) {
+    if (node === null) return;
+    this.postorder(node.left);
+    this.postorder(node.right);
+    console.log(node.data);
+  }
+
+  // to find minimum node in BST
+  findMinNode(node) {
+    if (node.left === null) return node;
+    else return this.findMinNode(node.left);
+  }
+
+  // to get root of BST
+  getRootNode() {
+    return this.root;
+  }
+
+  // to search for a node with given data
+  search(node, data) {
+    if (node === null) return null;
+    else if (data < node.data) return this.search(node.left, data);
+    else if (data > node.data) return this.search(node.right, data);
+    else return node;
+  }
 }
